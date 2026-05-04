@@ -12,7 +12,7 @@ const Navbar = () => {
   const user = data?.user;
   return (
     <div className="container mx-auto max-lg:collapse mt-5">
-      <input id="navbar-1-toggle" className="peer hidden" type="checkbox" />
+      <input id="navbar-1-togg  le" className="peer hidden" type="checkbox" />
       <label
         htmlFor="navbar-1-toggle"
         className="fixed inset-0 hidden max-lg:peer-checked:block"

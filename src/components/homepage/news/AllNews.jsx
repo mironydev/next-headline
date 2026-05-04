@@ -25,8 +25,8 @@ const AllNews = ({ news }) => {
           </div>
         </div>
         <div className="flex text-xl gap-1">
-          <GoBookmark className="hover:text-sky-500 cursor-pointer duration-100 hover:scale-110 active:scale-95" />
-          <IoShareSocialOutline className="hover:text-emerald-500 cursor-pointer duration-100 hover:scale-110 active:scale-95" />
+          <GoBookmark className="hover:text-sky-500 active:text-sky-500 cursor-pointer duration-100 hover:scale-110 active:scale-95" />
+          <IoShareSocialOutline className="hover:text-emerald-500 active:text-emerald-500 cursor-pointer duration-100 hover:scale-110 active:scale-95" />
         </div>
       </div>
       <div className="pt-5">
@@ -50,8 +50,8 @@ const AllNews = ({ news }) => {
         </button>
       </div>
       <div className="border-t border-black/20 flex justify-between items-center text-stone-600 pt-5 mt-5">
-        <div className="flex items-center gap-2">
-          <div className="flex text-orange-400 gap-1">
+        <div className="flex flex-wrap items-center gap-2">
+          <div className="flex flex-wrap text-orange-400 gap-1">
             <IoStar />
             <IoStar />
             <IoStar />

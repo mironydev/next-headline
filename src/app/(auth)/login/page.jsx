@@ -16,14 +16,12 @@ const LoginPage = () => {
   } = useForm();
 
   const handleLogin = async (data) => {
-    console.log("login data:", data);
     const { data: res, error } = await authClient.signIn.email({
       email: data.email,
       password: data.password,
       rememberMe: true,
       callbackURL: "/",
     });
-    console.log(res, error);
   };
 
   return (

@@ -2,12 +2,14 @@
 
 import { authClient, githubSignIn, googleSignIn } from "@/lib/auth-client";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { FaEye, FaEyeSlash } from "react-icons/fa6";
 
 const RegisterPage = () => {
   const [visible, setVisible] = useState(false);
+  const router = useRouter();
 
   const {
     register,
@@ -16,13 +18,12 @@ const RegisterPage = () => {
   } = useForm();
 
   const handleLogin = async (data) => {
-    console.log(data);
     const { data: res, error } = await authClient.signUp.email({
       name: data.name,
       email: data.email,
       password: data.password,
     });
-    console.log("data:", res, "error:", error);
+    router.push("/");
   };
 
   return (
