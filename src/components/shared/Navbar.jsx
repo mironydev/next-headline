@@ -12,7 +12,7 @@ const Navbar = () => {
   const user = data?.user;
   return (
     <div className="container mx-auto max-lg:collapse mt-5">
-      <input id="navbar-1-togg  le" className="peer hidden" type="checkbox" />
+      <input id="navbar-1-toggle" className="peer hidden" type="checkbox" />
       <label
         htmlFor="navbar-1-toggle"
         className="fixed inset-0 hidden max-lg:peer-checked:block"
@@ -65,14 +65,14 @@ const Navbar = () => {
               </button>
             </>
           ) : (
-            <Link href="/login" className="btn bg-stone-700 text-white">
+            <Link href="/login" className="btn bg-stone-700 text-white mr-2">
               Login
             </Link>
           )}
         </div>
       </div>
 
-      <div className="collapse-content lg:hidden z-1">
+      <div className="collapse-content bg-base-300 lg:hidden z-1">
         <ul className="menu text-stone-600 space-y-2">
           <NavLink href={"/"}>Home</NavLink>
           <NavLink href={"/about"}>About</NavLink>

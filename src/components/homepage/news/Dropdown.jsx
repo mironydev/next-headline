@@ -3,20 +3,31 @@
 "use client";
 
 import React from "react";
+import { useRouter } from "next/navigation";
 
-const Dropdown = () => {
+const Dropdown = ({ categories, id }) => {
+  const router = useRouter();
+
+  const handleCategoryChange = (e) => {
+    const categoryId = e.target.value;
+    if (categoryId) {
+      router.push(`/category/${categoryId}`);
+    }
+  };
+
   return (
-    <div id="leftsidebarFORmobile" className="md:hidden">
-      <select defaultValue="Select news category" className="select">
-        <option disabled={true}>Select news category</option>
-        <option value="">Breaking News</option>
-        <option>Regular News</option>
-        <option>International News</option>
-        <option>Sports</option>
-        <option>Entertainment</option>
-        <option>Culture</option>
-        <option>Arts</option>
-        <option>All News</option>
+    <div id="leftsidebarFORmobile" className="md:hidden px-4 w-fit">
+      <select
+        value={id || ""}
+        className="select pr-9"
+        onChange={handleCategoryChange}
+      >
+        <option value="">Select category</option>
+        {categories.map((category) => (
+          <option key={category.category_id} value={category.category_id}>
+            {category.category_name}
+          </option>
+        ))}
       </select>
     </div>
   );

@@ -7,9 +7,10 @@ import { fetchCategories, fetchNewsbyCategories } from "@/lib/fetch-functions";
 export default async function Home() {
   const categories = await fetchCategories();
   const allNews = await fetchNewsbyCategories("01");
+
   return (
-    <div className="relative container mx-auto flex flex-col md:grid md:grid-cols-4 gap-6 mt-10">
-      <Dropdown />
+    <div className="relative container mx-auto flex flex-col md:grid md:grid-cols-4 gap-6 mt-10 sm:px-5 md:px-4 lg:px-5">
+      <Dropdown categories={categories} />
       <div
         id="leftsidebar"
         className="col-span-1 sticky top-8 self-start hidden md:block"
