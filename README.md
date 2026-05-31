@@ -25,14 +25,6 @@ A full-stack news reading platform built with Next.js 16. Browse news by categor
 - [React Fast Marquee](https://www.react-fast-marquee.com/) — breaking news ticker
 - [date-fns](https://date-fns.org/) — date formatting
 
-## 🚀 Getting Started
-
-### Prerequisites
-
-- Node.js 18+
-- A MongoDB database (local or [MongoDB Atlas](https://www.mongodb.com/atlas))
-- Google and GitHub OAuth apps configured
-
 ## 📁 Folder Structure
 
 ```
