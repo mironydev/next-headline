@@ -4,6 +4,7 @@ import { authClient, githubSignIn, googleSignIn } from "@/lib/auth-client";
 import Link from "next/link";
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
+import toast from "react-hot-toast";
 import { FaEye, FaEyeSlash } from "react-icons/fa6";
 
 const LoginPage = () => {
@@ -16,12 +17,22 @@ const LoginPage = () => {
   } = useForm();
 
   const handleLogin = async (data) => {
+    const toastId = toast.loading("Logging in...");
+
     const { data: res, error } = await authClient.signIn.email({
       email: data.email,
       password: data.password,
       rememberMe: true,
       callbackURL: "/",
     });
+
+    if (error) {
+      toast.dismiss(toastId);
+      toast.error(error.message || "Login failed");
+      return;
+    }
+
+    toast.success("Login successful");
   };
 
   return (
