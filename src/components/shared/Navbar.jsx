@@ -6,6 +6,7 @@ import NavLink from "./NavLink";
 import Link from "next/link";
 import { authClient } from "@/lib/auth-client";
 import { MdLogout } from "react-icons/md";
+import toast from "react-hot-toast";
 
 const Navbar = () => {
   const { data, isPending } = authClient.useSession();
@@ -58,7 +59,12 @@ const Navbar = () => {
                 className="hover:shadow-[inset_0_4px_12px_rgba(0,0,0,0.1)] text-xl p-1.5 rounded-sm cursor-pointer"
                 title="Logout"
                 onClick={async () => {
-                  await authClient.signOut();
+                  try {
+                    await authClient.signOut();
+                    toast.success("Logout successful.");
+                  } catch (err) {
+                    toast.error("Logout failed.");
+                  }
                 }}
               >
                 <MdLogout />
