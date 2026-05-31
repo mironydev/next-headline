@@ -58,13 +58,12 @@ const Navbar = () => {
               <button
                 className="hover:shadow-[inset_0_4px_12px_rgba(0,0,0,0.1)] text-xl p-1.5 rounded-sm cursor-pointer"
                 title="Logout"
-                onClick={async () => {
-                  try {
-                    await authClient.signOut();
-                    toast.success("Logout successful.");
-                  } catch (err) {
-                    toast.error("Logout failed.");
-                  }
+                onClick={() => {
+                  toast.promise(authClient.signOut(), {
+                    loading: "Logging out...",
+                    success: "Logout successful.",
+                    error: "Logout failed.",
+                  });
                 }}
               >
                 <MdLogout />

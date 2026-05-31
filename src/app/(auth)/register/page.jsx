@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
+import toast from "react-hot-toast";
 import { FaEye, FaEyeSlash } from "react-icons/fa6";
 
 const RegisterPage = () => {
@@ -17,12 +18,23 @@ const RegisterPage = () => {
     formState: { errors },
   } = useForm();
 
-  const handleLogin = async (data) => {
-    const { data: res, error } = await authClient.signUp.email({
+  const handleRegister = async (data) => {
+    const toastId = toast.loading("Creating account...");
+
+    const { error } = await authClient.signUp.email({
       name: data.name,
       email: data.email,
       password: data.password,
     });
+
+    toast.dismiss(toastId);
+
+    if (error) {
+      toast.error(error.message || "Registration failed");
+      return;
+    }
+
+    toast.success("Account created successfully");
     router.push("/");
   };
 
@@ -31,7 +43,7 @@ const RegisterPage = () => {
       <p className="text-lg text-center font-semibold border-b border-black/20 pb-4 mb-4">
         Register
       </p>
-      <form onSubmit={handleSubmit(handleLogin)} className="fieldset">
+      <form onSubmit={handleSubmit(handleRegister)} className="fieldset">
         <label className="label">Name</label>
         <input
           type="text"
